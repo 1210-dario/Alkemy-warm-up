@@ -6,7 +6,10 @@ const config = require('../config');
 module.exports  = async () =>{
     try{
     await sequelize.authenticate();
-    sequelize.sync({ alter: true });
+    require('../models/post');
+    require('../models/categoryTypes');
+    //sequelize.sync({ force: true });
+    sequelize.sync();
     logger.info('DB loaded and connected')
     const server = new ExpressServer();
     logger.info('Express Loaded');

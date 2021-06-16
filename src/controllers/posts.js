@@ -12,13 +12,13 @@ const postService = require('../services/postService');
  * @param {express.Response} res 
  */
 
-const getAllPosts = async (req, res) =>{
+const getAllPosts = async (req, res, next) =>{
 
     try{
         const posts = await postService.findAll();
         res.json(posts);
     }catch(err){
-        console.log(err);
+        next(err);
     }
 }
 
@@ -28,8 +28,13 @@ const getAllPosts = async (req, res) =>{
  * @param {express.Response} res 
  */
 
-const getPost = (req, res) =>{
+const getPost = (req, res, next) =>{
 
+    try{
+
+    }catch(err){
+        next(err);
+    }
 }
 
 /**
@@ -38,8 +43,13 @@ const getPost = (req, res) =>{
  * @param {express.Response} res 
  */
 
-const createPost = (req, res) => {
+const createPost = (req, res, next) => {
 
+    try{
+
+    }catch(err){
+        next(err);
+    }
 }
 
 /**
@@ -48,8 +58,13 @@ const createPost = (req, res) => {
  * @param {express.Response} res 
  */
 
-const updatePost = (req, res) => {
+const updatePost = (req, res, next) => {
 
+    try{
+
+    }catch(err){
+        next(err);
+    }
 }
 
 /**
@@ -58,8 +73,13 @@ const updatePost = (req, res) => {
  * @param {express.Response} res 
  */
 
-const deletePost = (req, res) => {
+const deletePost = (req, res, next) => {
 
+    try{
+
+    }catch(err){
+        next(err);
+    }
 }
 
 module.exports = {
