@@ -1,6 +1,8 @@
 //Requiero express
 const express = require('express');
 
+const postService = require('../services/postService');
+
 //La idea es que aca solo deberiamos manejar la logica del controller y no del service.
 
 
@@ -10,15 +12,15 @@ const express = require('express');
  * @param {express.Response} res 
  */
 
-const getAllPosts = (req, res) =>{
-    const users = [
-        {
-            id:1,
-            name:"Dari"
-        }
-    ]
-    res.json(users)
-};
+const getAllPosts = async (req, res) =>{
+
+    try{
+        const posts = await postService.findAll();
+        res.json(posts);
+    }catch(err){
+        console.log(err);
+    }
+}
 
 /**
  * 
