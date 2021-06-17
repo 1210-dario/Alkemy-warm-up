@@ -15,10 +15,6 @@ const Post = sequelize.define('Posts', {
     type: DataTypes.STRING(250),
     allowNull: true 
   },
-  category:{
-    type: DataTypes.STRING,
-    allowNull: true
-  },
   creationDate:{
     type: DataTypes.DATEONLY,
     allowNull: false

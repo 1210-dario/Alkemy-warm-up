@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const CategoryType = require('../models/categoryTypes');
+
 class PostRepository {
     constructor(){
 
