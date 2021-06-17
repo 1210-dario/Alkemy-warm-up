@@ -23,11 +23,14 @@ const Post = sequelize.define('Posts', {
     type: DataTypes.DATEONLY,
     allowNull: false
   }
-
 }, {
   // Other model options go here
 });
 
 module.exports = Post;
 
-const CategoryType = require('./categoryTypes');
+
+Post.belongsTo(require('./categoryTypes'),{
+  foreignKey: 'categoryTypeId',
+  targetKey: 'id'
+});

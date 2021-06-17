@@ -14,3 +14,7 @@ const CategoryType = sequelize.define('CategoryType', {
 module.exports = CategoryType;
 
 const Post = require('./post');
+CategoryType.hasMany(Post, {
+  foreignKey: 'categoryTypeId',
+  sourceKey:'id'
+}); 
