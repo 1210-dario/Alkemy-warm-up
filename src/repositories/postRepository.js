@@ -1,5 +1,5 @@
 const Post = require('../models/post');
-
+const CategoryType = require('../models/categoryTypes');
 class PostRepository {
     constructor(){
 
@@ -7,6 +7,12 @@ class PostRepository {
 
     async findAll(){
         return await Post.findAll();
+    }
+
+    async save(p){
+        return await Post.create(p, {
+            include: [CategoryType]
+        });
     }
 }
 

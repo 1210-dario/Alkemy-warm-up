@@ -43,10 +43,13 @@ const getPost = (req, res, next) =>{
  * @param {express.Response} res 
  */
 
-const createPost = (req, res, next) => {
+const createPost = async (req, res, next) => {
 
     try{
+        let p = req.body;
+        p = await postService.save(p);
 
+        res.status(201).json(p)
     }catch(err){
         next(err);
     }
