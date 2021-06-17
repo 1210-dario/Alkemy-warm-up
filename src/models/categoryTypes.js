@@ -18,3 +18,5 @@ CategoryType.hasMany(Post, {
   foreignKey: 'categoryTypeId',
   sourceKey:'id'
 }); 
+
+

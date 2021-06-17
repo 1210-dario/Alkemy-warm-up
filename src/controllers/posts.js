@@ -28,10 +28,12 @@ const getAllPosts = async (req, res, next) =>{
  * @param {express.Response} res 
  */
 
-const getPost = (req, res, next) =>{
+const getPost = async (req, res, next) =>{
 
     try{
-
+        let { id } = req.params;
+        const post = await postService.findById(id);
+        res.json(post);
     }catch(err){
         next(err);
     }
@@ -61,9 +63,13 @@ const createPost = async (req, res, next) => {
  * @param {express.Response} res 
  */
 
-const updatePost = (req, res, next) => {
+const updatePost = async (req, res, next) => {
 
     try{
+        let { id } = req.params;
+        let p = req.body;
+        const pPatched = await postService.patch(id,p);
+        res.json(pPatched);
 
     }catch(err){
         next(err);
@@ -76,10 +82,13 @@ const updatePost = (req, res, next) => {
  * @param {express.Response} res 
  */
 
-const deletePost = (req, res, next) => {
+const deletePost = async (req, res, next) => {
 
     try{
+        let { id } = req.params;
+        const posted = await postService.remove(id);
 
+        res.json(posted)
     }catch(err){
         next(err);
     }
