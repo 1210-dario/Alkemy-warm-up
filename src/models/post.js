@@ -25,7 +25,8 @@ const Post = sequelize.define('Posts', {
 
 module.exports = Post;
 
-
+//Un Post tiene 1 categoría 
+//Se añade una Fk (categoryTypeId) a la tabla Posts
 Post.belongsTo(require('./categoryTypes'),{
   foreignKey: 'categoryTypeId',
   targetKey: 'id'

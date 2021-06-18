@@ -1,8 +1,8 @@
-class Succes {
+class Success {
     constructor(data){
         this.status = 'OK',
         this.data = data
     }
 }
 
-module.exports = Succes;
+module.exports = Success;

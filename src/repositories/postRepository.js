@@ -7,11 +7,27 @@ class PostRepository {
     }
 
     async findAll(){
-        return await Post.findAll();
+        return await Post.findAll({
+
+            attributes: ['id','title','image','creationDate'],
+            include: {
+                model: CategoryType,
+                attributes: ['description']
+            },
+            order: [
+                ['creationDate', 'DESC'],
+            ]
+        });
     }
 
     async findById(id){
-        return await Post.findByPk(id);
+        return await Post.findByPk(id,{
+            attributes: ['id','title','image','creationDate'],
+            include: {
+                model: CategoryType,
+                attributes: ['description']
+            }
+        });
     }
 
     async save(p){

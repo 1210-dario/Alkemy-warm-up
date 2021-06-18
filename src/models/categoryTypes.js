@@ -13,7 +13,8 @@ const CategoryType = sequelize.define('CategoryType', {
 
 module.exports = CategoryType;
 
-
+//Una categoría tiene muchos post o publicaciones
+//Se añade una Fk (categoryTypeId) a la tabla Posts
 CategoryType.hasMany(require('./post'), {
   foreignKey: 'categoryTypeId',
   sourceKey:'id'

@@ -3,6 +3,8 @@ const express = require('express');
 
 const postService = require('../services/postService');
 
+const Success = require('../handlers/successHandler');
+
 //La idea es que aca solo deberiamos manejar la logica del controller y no del service.
 
 
@@ -16,7 +18,7 @@ const getAllPosts = async (req, res, next) =>{
 
     try{
         const posts = await postService.findAll();
-        res.json(posts);
+        res.json(new Success(posts));
     }catch(err){
         next(err);
     }
@@ -33,7 +35,7 @@ const getPost = async (req, res, next) =>{
     try{
         let { id } = req.params;
         const post = await postService.findById(id);
-        res.json(post);
+        res.json(new Success(post));
     }catch(err){
         next(err);
     }
@@ -51,7 +53,7 @@ const createPost = async (req, res, next) => {
         let p = req.body;
         p = await postService.save(p);
 
-        res.status(201).json(p)
+        res.status(201).json(new Success(p));
     }catch(err){
         next(err);
     }
@@ -69,8 +71,7 @@ const updatePost = async (req, res, next) => {
         let { id } = req.params;
         let p = req.body;
         const pPatched = await postService.patch(id,p);
-        res.json(pPatched);
-
+        res.json(new Success(pPatched));
     }catch(err){
         next(err);
     }
@@ -88,7 +89,7 @@ const deletePost = async (req, res, next) => {
         let { id } = req.params;
         const posted = await postService.remove(id);
 
-        res.json(posted)
+        res.json(new Success(posted));
     }catch(err){
         next(err);
     }
